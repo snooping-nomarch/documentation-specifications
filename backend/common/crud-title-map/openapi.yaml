@@ -1,0 +1,40 @@
+openapi: 3.2.0
+info:
+  title: common-crud-title-map
+  description: Общие компоненты batch title-map (ADR-26062101)
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    TitleMapRequest:
+      type: object
+      description: Запрос подписей по списку UUID (ADR-26062101)
+      properties:
+        uuids:
+          type: array
+          description: Уникальные UUID записей; не более 100
+          items:
+            type: string
+            format: uuid
+          maxItems: 100
+      required:
+        - uuids
+    TitleMapItem:
+      type: object
+      description: Подпись одной записи
+      properties:
+        title:
+          type: string
+          description: Отображаемая подпись
+      required:
+        - title
+    TitleMapResponse:
+      type: object
+      description: Карта UUID → подпись; отсутствующие UUID не включаются
+      properties:
+        items:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/TitleMapItem"
+      required:
+        - items
