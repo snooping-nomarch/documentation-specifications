@@ -58,7 +58,7 @@
 
 ## Kafka producer в сервисе
 
-Из messaging-артефакта (`openapi-codegen` 1.7.0+, ADR-26061101) генерируется `{Schema}V{Major}MessageBuilder`.
+Из messaging-артефакта (ADR-26061101) генерируется `{Schema}V{Major}MessageBuilder`.
 
 1. Сформируйте `MessagePayload` в сервисе.
 2. Вызовите `withPayload(payload)` или `withPayload(payload, key)` — обязательные заголовки (`schemaName`, `schemaVersion`, `createdAt`, `uuid`) выставляются автоматически.
